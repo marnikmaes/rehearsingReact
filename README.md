@@ -60,4 +60,67 @@ export default function App(){
 ```
 In this code, whenever the input value changes, the onChange event triggers the setNewItem function, updating the state with the new value. This approach ensures that the component rerenders correctly without causing an infinite loop.
 
+### Managing Event Handlers in React
+To handle the submission of a form in React, you typically use an event handler function like handleSubmit. This function prevents the default behavior of the form submission using e.preventDefault(). Then, it updates the state variable todos using the SetTodos function provided by React's state management system.
+```jsx
+function handleSubmit(e) {
+  e.preventDefault();
+
+  SetTodos((currentTodos) => {
+    return [
+      ...currentTodos, 
+      { id: crypto.randomUUID(), title: newItem, completed: false },
+    ];
+  });
+}
+```
+In the JSX code, you can map through the todos array and render each todo item as a list item (<li>). Each list item has a unique key assigned using the key prop. The input checkbox displays the completion status of the todo item, while the todo title is displayed next to it. Additionally, a delete button is provided for each todo item.
+```jsx
+<ul className="list">
+  {todos.map(todo => {
+    return (
+      <>
+        <li key={todo.id}>
+          <label>
+            <input type="checkbox" checked={todo.completed} />
+            {todo.title} 
+          </label>
+          <button className="btn btn-danger">Delete</button>
+        </li>
+      </>
+    );
+  })}
+</ul>
+```
+This setup allows for dynamic rendering of todo items based on the todos state, enabling users to add and manage their todos efficiently.
+
+### Managing onChange Click Event in React
+```jsx
+  function toggleToDo(id, completed){
+    SetTodos(currentTodos => {
+      return currentTodos.map(todo => {
+        if (todo.id == id){
+          return{...todo, completed}
+        }
+
+        return todo
+      })
+    })
+
+  }
+```
+The `toggleToDo` function toggles the completion status of a to-do item identified by its id. It updates the state using SetTodos, mapping over the current to-do list and modifying the target to-do's completed property.
+
+```jsx
+<label>
+  <input type="checkbox" checked={todo.completed} onChange={e => toggleToDo(todo.id, e.target.checked)}/>
+    {todo.title} 
+</label>
+```
+In the JSX, checkboxes represent to-do items. Their checked attribute reflects the completion status, and the onChange event triggers toggleToDo with the to-do's id and the new completion status.
+
+
+
+
+
 
