@@ -39,6 +39,7 @@ function App() {...
 ```
 In React, components are created by defining functions that start with a capital letter and return JSX. These components break down individual parts of your application, making it easier to manage and organize your code. It's important to note that in React, components can only return a single element at a time. To overcome this limitation, you can wrap multiple elements in a `<div>` tag, but a more elegant solution is to use a fragment, denoted by `<>` and closed by `</>`. This allows you to group elements without introducing an extra DOM node.
 
+## Project code
 ### Managing State in React
 In React, state variables are immutable, meaning you cannot directly change their values. Instead, you need to use a function provided by React, typically named with the prefix set, to update the state. For example, in this project, if you try to update the state variable newItem directly like this:
 ```jsx
@@ -119,6 +120,24 @@ The `toggleToDo` function toggles the completion status of a to-do item identifi
 ```
 In the JSX, checkboxes represent to-do items. Their checked attribute reflects the completion status, and the onChange event triggers toggleToDo with the to-do's id and the new completion status.
 
+### Managing Delete Event Handling in React
+```jsx
+function deleteTodo(id) {
+  SetTodos(currentTodos => currentTodos.filter(todo => todo.id !== id));
+}
+```
+The `deleteTodo` function removes a to-do item from the list based on its id. It filters out the to-do with the specified id and updates the state using SetTodos.
+
+```jsx
+<button onClick={() => deleteTodo(todo.id)} className="btn btn-danger">Delete</button>
+```
+In the JSX, the delete button invokes the deleteTodo function with the to-do's id when clicked.
+
+### short-circuiting in React
+```jsx
+{todos.length === 0 && "No ToDos"}
+```
+This code is a short-circuit evaluation in JavaScript. It checks if the length of the todos array is zero. If it is, it evaluates the string "No ToDos". If the length is not zero, it skips evaluating the string. This pattern is commonly used for conditional rendering in React components.
 
 
 
