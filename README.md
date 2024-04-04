@@ -1,6 +1,8 @@
 # rehearsingReact
 This repository serves as a dummy platform for practicing my React skills. It is not intended for use in any project and is solely for demonstration purposes.
 
+Credit for this repository belongs to [Web Dev Simplified](https://www.youtube.com/@WebDevSimplified), who inspired the project contained herein.
+
 ## Project Setup
 Setting up the project is incredibly simple and involves just three commands.
 
