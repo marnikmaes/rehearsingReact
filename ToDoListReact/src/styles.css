@@ -11,6 +11,17 @@ body {
 	margin: 0 auto;
 }
 
+footer {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	font-size: 12px;
+	text-align: center;
+	color: hsl(200, 100%, 90%, 50%);
+}
+
+
 .new-item-form {
 	display: flex;
 	flex-direction: column;

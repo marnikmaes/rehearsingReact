@@ -44,9 +44,14 @@ export default function App() {
 
   return (
     <>
+      <h1>React rehearsal: ToDo List</h1>
       <NewTodoForm onSubmit={addTodo} />
       <h1 className="header">Todo List</h1>
       <TodoList todos={todos} toggleTodo={toggleTodo} deleteTodo={deleteTodo} />
+
+      <footer>
+        <p>Big shoutout to Web Dev Simplified on YouTube for his awesome crash course video! It's what made this entire project possible and served as a fantastic starter and rehearsal.</p>
+      </footer>
     </>
   )
 }
