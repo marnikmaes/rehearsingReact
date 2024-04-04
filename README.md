@@ -39,4 +39,25 @@ function App() {...
 ```
 In React, components are created by defining functions that start with a capital letter and return JSX. These components break down individual parts of your application, making it easier to manage and organize your code. It's important to note that in React, components can only return a single element at a time. To overcome this limitation, you can wrap multiple elements in a `<div>` tag, but a more elegant solution is to use a fragment, denoted by `<>` and closed by `</>`. This allows you to group elements without introducing an extra DOM node.
 
+### Managing State in React
+In React, state variables are immutable, meaning you cannot directly change their values. Instead, you need to use a function provided by React, typically named with the prefix set, to update the state. For example, in this project, if you try to update the state variable newItem directly like this:
+```jsx
+export default function App(){
+  const [newItem, setNewItem] = useState("")
+  setNewItem("a;sljdf;lksd")
+```
+This would cause an infinite loop because setting the state triggers a rerender of the component, resulting in an endless cycle.
+
+To correctly update the state and avoid infinite loops, you should utilize React's useState hook along with event handlers. For instance:
+```jsx
+export default function App(){
+  const [newItem, setNewItem] = useState("")
+
+  return (
+    ...
+    <input value={newItem} onChange={e => setNewItem(e.target.value)} type="text" id="item"/>
+  )
+```
+In this code, whenever the input value changes, the onChange event triggers the setNewItem function, updating the state with the new value. This approach ensures that the component rerenders correctly without causing an infinite loop.
+
 
